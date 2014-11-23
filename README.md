@@ -40,7 +40,7 @@ See the tests in `modules/__tests__/DonburiModel.js` and the example application
 
 # Demo
 
-See [this](http://jsbin.com/jakoxa/1/edit?js,output) JSBin for a demo.
+See [this](http://jsbin.com/jakoxa/2/edit?js,output) JSBin for a demo.
 
 
 # References
