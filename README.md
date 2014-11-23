@@ -1,12 +1,8 @@
-# Donburi Model
+# Donburi Model [![Build Status](https://travis-ci.org/kimagure/donburi-model.svg)](https://travis-ci.org/kimagure/donburi-model)
 
-Made by taking ideas from facebook/flux Dispatcher and the example Store
-and Action implementations, this module attempts to bring a simple
-single Model for managing application state.
+Made by taking ideas from facebook/flux Dispatcher and the example Store and Action implementations, this module attempts to bring a simple single Model for managing application state.
 
-The idea is to store application in one object, to provide a single
-source of truth. All handling functions are called by a request method
-and are run synchronously.
+The idea is to store application in one object, to provide a single source of truth. All handling functions are called by a request method and are run synchronously.
 
 
 # Usage
@@ -40,8 +36,7 @@ module.exports = Model;
 
 # Examples
 
-See the tests in `modules/__tests__/DonburiModel.js` and the example
-application in `examples/clicker`.
+See the tests in `modules/__tests__/DonburiModel.js` and the example application in `examples/clicker`.
 
 
 # References
