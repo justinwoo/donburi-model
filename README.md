@@ -38,6 +38,10 @@ module.exports = Model;
 
 See the tests in `modules/__tests__/DonburiModel.js` and the example application in `examples/clicker`.
 
+# Demo
+
+See [this](http://jsbin.com/kexaqi/1/edit?js,output) JSBin for a demo.
+
 
 # References
 
