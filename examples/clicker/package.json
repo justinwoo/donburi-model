@@ -1,0 +1,17 @@
+{
+  "name": "donburi-model-clicker-demo",
+  "version": "1.0.0",
+  "description": "donburi demo app",
+  "main": "index.js",
+  "private": true,
+  "author": "Justin Woo",
+  "license": "MIT",
+  "devDependencies": {
+    "jsx-loader": "^0.12.1",
+    "react-tools": "^0.12.0",
+    "webpack": "^1.4.13"
+  },
+  "dependencies": {
+    "react": "^0.12.0"
+  }
+}

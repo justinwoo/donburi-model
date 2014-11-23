@@ -1,0 +1,19 @@
+{
+  "name": "donburi-model",
+  "version": "0.0.1",
+  "description": "Simple model module for JS applications",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kimagure/donburi-model.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Justin Woo",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^0.1.37",
+    "jest-cli": "^0.1.18"
+  }
+}
