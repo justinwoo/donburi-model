@@ -26,20 +26,20 @@ describe('DonburiModel', function () {
       // however, setting the state with a new state will help
       // in usages such as ReactComponentWithPureRenderMixin
       Model.setState(state);
-      Model.update();
     });
     Model.register(Constants.REMOVE_SOMETHING, function () {
       var state = Model.getState();
       state.counter -= 1;
       Model.setState(state);
-      Model.update();
     });
 
     expect(Model.getState().counter).toBe(0);
     Model.request(Constants.ADD_SOMETHING);
     expect(Model.getState().counter).toBe(1);
+    Model.request(Constants.ADD_SOMETHING);
+    expect(Model.getState().counter).toBe(2);
     Model.request(Constants.REMOVE_SOMETHING);
-    expect(Model.getState().counter).toBe(0);
+    expect(Model.getState().counter).toBe(1);
   });
 
   it('can handle custom update handlers', function () {
@@ -49,7 +49,7 @@ describe('DonburiModel', function () {
       Model.update();
     }
     Model.register('update', function () {
-      Model.customUpdate();
+      return Model.customUpdate;
     });
     expect(Model.getState().counter).toBe(0);
     Model.request('update');
