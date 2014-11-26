@@ -1,1 +1,4 @@
-module.exports = require('./modules/DonburiModel');
+module.exports = {
+  getModel: require('./modules/DonburiModel').getModel,
+  getReactMixin: require('./modules/getReactMixin')
+};

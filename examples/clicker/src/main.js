@@ -1,14 +1,14 @@
 var React = require('react');
 var Constants = require('./Constants');
 var Model = require('./Model');
+var getDonburiMixin = require('donburi-model').getReactMixin;
 
 // just to make sure i'm not too crazy
 var clickCount = 0;
 
 var App = React.createClass({
-  getInitialState: function () {
-    return Model.getState();
-  },
+  mixins: [getDonburiMixin(Model)],
+
   handleAddMore: function  () {
     Model.request(Constants.ADD_SOMETHING);
     // need to force update to show the clickcount outside of our app state
@@ -33,15 +33,6 @@ var App = React.createClass({
         <p>Manual Counter: {clickCount}</p>
       </div>
     );
-  },
-  onChange: function () {
-    this.setState(Model.getState());
-  },
-  componentDidMount: function () {
-    Model.subscribe(this.onChange);
-  },
-  componentWillUnmount: function () {
-    Model.unsubscribe(this.onChange);
   }
 });
 

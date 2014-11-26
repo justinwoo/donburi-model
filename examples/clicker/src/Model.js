@@ -7,11 +7,9 @@ var Model = getModel({
 
 Model.register(Constants.ADD_SOMETHING, function () {
   Model.getState().counter += 1;
-  Model.update();
 });
 Model.register(Constants.REMOVE_SOMETHING, function () {
   Model.getState().counter -= 1;
-  Model.update();
 });
 
 module.exports = Model;
