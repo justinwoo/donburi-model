@@ -20,7 +20,12 @@ function getModel (initialState) {
     if (busy === false && jobs.length > 0) {
       var job = jobs.pop();
       busy = true;
-      handlers[job.key](job.payload);
+      var customUpdate = handlers[job.key](job.payload);
+      if (typeof customUpdate === 'undefined') {
+        Model.update();
+      } else {
+        customUpdate();
+      }
     }
   }
 
