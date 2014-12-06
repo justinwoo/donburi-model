@@ -4,10 +4,21 @@ Made by taking ideas from facebook/flux Dispatcher and the example Store and Act
 
 The idea is to store application in one object, to provide a single source of truth. All handling functions are called by a request method and are run synchronously.
 
+Data flow goes something like this:
+
+```
+---------     ---------------     ------------
+| Model | --> | Application | --> | Requests |
+---------     ---------------     ------------
+   ^                                   |
+   |-----------------------------------|
+```
+
 
 # Usage
 
 ```js
+// Model.js
 var getModel = require('donburi-model').getModel;
 var Constants = require('./Constants');
 
@@ -23,16 +34,53 @@ Model.register(Constants.ADD_SOMETHING, function () {
   var state = Model.getState();
   // controlled mutation by getting a result from a pure function
   state.counter = addOne(state.counter);
-  Model.update();
 });
 Model.register(Constants.REMOVE_SOMETHING, function () {
+  // direct state manipulation, kind of dangerous
   Model.getState().counter -= 1;
-  Model.update();
 });
 
 module.exports = Model;
 ```
 
+You can also implement a customUpdate to be called, which should be returned in your request.
+
+```js
+// App.js
+var React = require('react');
+var Constants = require('./Constants');
+var Model = require('./Model');
+var getDonburiMixin = require('donburi-model').getReactMixin;
+
+var App = React.createClass({
+  // DonburiMixin provides these methods:
+  // getInitialState -- set this.state to Model.getState()
+  // _onChange -- call this.setState(Model.getState())
+  // componentDidMount -- subscribe to Model changes with _onChange
+  // componentWillUnmount -- unsubscribe to Model changes
+  mixins: [getDonburiMixin(Model)],
+
+  handleAddMore: function  () {
+    Model.request(Constants.ADD_SOMETHING);
+  },
+  handleDecrement: function () {
+    Model.request(Constants.REMOVE_SOMETHING);
+  },
+  render: function () {
+    return (
+      <div>
+        <p>
+          <button onClick={this.handleAddMore}>Add more</button>
+        </p>
+        <p>
+          <button onClick={this.handleDecrement}>Decrement</button>
+        </p>
+        <p>My Counter: {this.state.counter}</p>
+      </div>
+    );
+  }
+});
+```
 
 # Examples
 
